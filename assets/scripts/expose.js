@@ -32,13 +32,13 @@ function init() {
         let volume = event.target.value;
         let img_path;
         if (volume < 33 && volume != 0) {
-            img_path = "assets/icons/volume-level-1.svg"
+            img_path = "assets/icons/volume-level-1.svg";
         } else if (volume == 0) {
-            img_path = "assets/icons/volume-level-0.svg"
+            img_path = "assets/icons/volume-level-0.svg";
         } else if (33 <= volume && volume < 67) {
-            img_path = "assets/icons/volume-level-2.svg"
+            img_path = "assets/icons/volume-level-2.svg";
         } else {
-            img_path = "assets/icons/volume-level-3.svg"
+            img_path = "assets/icons/volume-level-3.svg";
         }
         result.src = img_path;
         myAudio.volume = volume / 100;
@@ -50,8 +50,9 @@ function init() {
 
     button.addEventListener('click', (event) => {
         let playAudio = new Audio(myAudio.src);
+        playAudio.volume = myAudio.volume;
         if (party) {
-            jsConfetti.addConfetti()
+            jsConfetti.addConfetti();
         }
         if (audio) {
             playAudio.play();
