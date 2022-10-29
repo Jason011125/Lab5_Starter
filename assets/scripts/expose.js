@@ -5,15 +5,17 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
     const jsConfetti = new JSConfetti()
     let party = false;
+    let audio = false;
 
     const myAudio = document.getElementsByClassName("hidden")[0];
     const selectElement = document.getElementById("horn-select")
     selectElement.addEventListener('change', (event) => {
+        audio = true;
         const result = document.querySelector("img")
         let horn_value = event.target.value;
         let img_path = "assets/images/" + horn_value + ".svg";
         myAudio.src = "assets/audio/" + horn_value + ".mp3"
-        if (myAudio.src == "http://127.0.0.1:5500/assets/audio/party-horn.mp3") {
+        if (horn_value == "party-horn") {
             party = true;
         } else {
             party = false;
@@ -48,12 +50,13 @@ function init() {
 
     button.addEventListener('click', (event) => {
         let playAudio = new Audio(myAudio.src);
-        console.log(playAudio);
-        console.log(party);
         if (party) {
             jsConfetti.addConfetti()
         }
-        playAudio.play();
+        if (audio) {
+            playAudio.play();
+        }
+
     });
 
 }
