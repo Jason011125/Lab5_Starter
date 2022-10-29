@@ -10,7 +10,7 @@ function init() {
         speechSynthesis.onvoiceschanged = populateVoiceList;
     }
     button.addEventListener('click', (event) => {
-        playVoice(changePicBack);
+        playVoice();
 
     })
 
@@ -39,9 +39,7 @@ function populateVoiceList() {
     }
 }
 
-function playVoice(callback) {
-    let img = document.querySelector('img');
-    img.src = "assets/images/smiling-open.png"
+function playVoice() {
     const synth = window.speechSynthesis;
     const input = document.querySelector('textarea');
     const utterThis = new SpeechSynthesisUtterance(input.value);
@@ -52,13 +50,14 @@ function playVoice(callback) {
             utterThis.voice = voices[i];
         }
     }
+    const img = document.querySelector('img');
     synth.speak(utterThis);
+    utterThis.addEventListener('start', (event) => {
+        img.src = "assets/images/smiling-open.png"
+    });
+    utterThis.addEventListener('end', (event) => {
+        img.src = "assets/images/smiling.png"
+    });
 
 
-}
-
-function changePicBack() {
-    let img = document.querySelector('img');
-    img.src = "assets/images/smiling.png"
-    console.log(123)
 }
