@@ -2,5 +2,5 @@
 
 Name: Zixuan Chen
 https://github.com/Jason011125/introduction-to-github
-https://github.com/Jason011125/expose.html
-https://github.com/Jason011125/explore.html
+https://jason011125.github.io/Lab5_Starter/expose.html
+https://jason011125.github.io/Lab5_Starter/explore.html
